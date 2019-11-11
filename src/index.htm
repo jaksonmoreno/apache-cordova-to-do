@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To-Do List APP </title>
+    <!--Favicon-->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <!--JQuery Mobile styles-->
+    <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+</head>
+
+<body>
+
+    <div data-role="page" id="todo-list-page" class="ui-content">
+
+        <div data-role="header">
+            <h1>To-Do List App</h1>
+        </div>
+        <!-- /header -->
+
+        <div data-role="content">
+
+            <div data-role="collapsibleset" data-theme="a" data-content-theme="a" data-mini="true">
+                <div data-role="collapsible" data-collapsed="false" data-expanded-icon="grid" data-collapsed-icon="grid">
+                    <h3>Create new task</h3>
+                    <!-- Create new Task Form-->
+                    <div class="ui-body ui-body-a">
+
+                        <div data-role="fieldcontain">
+                            <label for="task-name">Task Name:</label>
+                            <input type="text" name="task-name" id="txt-task-name" value="" placeholder="Task name" />
+                        </div>
+
+                        <div data-role="fieldcontain">
+                            <label for="task-description">Task description:</label>
+                            <textarea cols="40" rows="8" name="txt-task-description" id="text-description" data-mini="true"></textarea>
+                        </div>
+
+                        <div data-role="fieldcontain">
+                            <label for="expired-date">Expired date:</label>
+                            <input type="date" name="expired-date" id="txt-expired-date" value="">
+                        </div>
+
+                        <div data-role="fieldcontain">
+                            <input type="button" class="ui-shadow ui-btn ui-corner-all" value="Add new task">
+                        </div>
+                        <a href="#" class="ui-btn-icon-notext ui-input-btn ui-btn ui-icon-delete" data-enhanced="true" data-iconpos="right" data-mini="true">Clear</a>
+                    </div>
+                    <!-- /Form -->
+                </div>
+                <div data-role="collapsible" data-expanded-icon="tag" data-collapsed-icon="tag">
+                    <h3>To-Do</h3>
+                    <p>Todo list.</p>
+                </div>
+                <div data-role="collapsible" data-expanded-icon="clock" data-collapsed-icon="clock">
+                    <h3>Doing</h3>
+                    <p>Doing list.</p>
+                </div>
+                <div data-role="collapsible" data-expanded-icon="check" data-collapsed-icon="check">
+                    <h3>Done</h3>
+                    <p>Done List.</p>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- /content -->
+
+        <!--<div data-role="footer">
+            <h4>Credits</h4>
+            <span>
+                GNU General Public License
+            </span>
+        </div>-->
+        <!-- /footer -->
+
+    </div>
+    <!-- /page -->
+
+    <!--Scripts-->
+    <script src="libs/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</body>
+
+</html>
