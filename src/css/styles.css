@@ -17,3 +17,28 @@ body,
     height: inherit;
     /* inherit height without padding nor border */
 }
+
+ul.task-container {
+    list-style: none;
+}
+
+ul.task-container li {
+    padding-top: 5px;
+}
+
+
+/* Test */
+
+div.dop-zone {
+    height: 50px;
+    width: 50px;
+    background-color: cyan;
+    border: solid 1px red;
+}
+
+.dragMe {
+    width: 20px;
+    height: 20px;
+    cursor: move;
+    color: red;
+}
