@@ -1,7 +1,7 @@
 html,
 body,
 #todo-list-page {
-    height: 90%;
+    height: 95%;
     margin: 0;
     padding: 0;
 }
@@ -26,6 +26,9 @@ ul.task-container li {
     padding-top: 5px;
 }
 
+div.form-buttons{
+    text-align: right;
+}
 
 /* Test */
 
