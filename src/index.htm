@@ -17,9 +17,10 @@
 
 <body>
 
-<div data-role="page" id="todo-list-page" class="ui-content">
-
+<div data-role="page" id="todo-list-page" class="ui-content" data-title="To-Do List App">
+    <!-- Info Panel -->
     <div data-role="panel" id="infoPanel">
+        <h3>About this app:</h3>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at turpis ac ipsum aliquet vulputate ac quis
             leo. Cras nec elit porttitor orci mollis laoreet ac in justo. Duis cursus porta erat, eu efficitur risus.
@@ -29,11 +30,15 @@
             aliquam ante magna eu nibh. Nunc libero lorem, sollicitudin sit amet erat eget, iaculis placerat nulla.
             Praesent facilisis congue auctor.
         </p>
-        <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-mini ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
-    </div><!-- /panel -->
+        <a href="#demo-links" data-rel="close"
+           class="ui-btn ui-shadow ui-corner-all ui-mini ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close
+            panel</a>
+    </div><!-- /Info Panel -->
 
+    <!-- Header -->
     <div data-role="header">
-        <h1>To-Do List App <a href="#infoPanel" class="ui-shadow ui-mini ui-btn ui-corner-all ui-icon-info ui-btn-icon-right ui-btn-icon-notext">&nbsp;</a>
+        <h1>To-Do List App <a href="#infoPanel"
+                              class="ui-shadow ui-mini ui-btn ui-corner-all ui-icon-info ui-btn-icon-right ui-btn-icon-notext">&nbsp;</a>
         </h1>
     </div>
     <!-- /header -->
@@ -94,9 +99,9 @@
             <!-- Done Cards -->
             <div data-role="collapsible" data-mini="true" data-expanded-icon="heart" data-collapsed-icon="heart">
                 <h3>Done</h3>
-                <ul class="task-container">
-                    <li>
-                        <div class="ui-corner-all task-item">
+                <ul id="list" class="touch" data-role="listview" data-icon="false" data-split-icon="delete">
+                    <li class="task-item">
+                        <div class="ui-corner-all">
                             <div class="ui-bar ui-bar-a">
                                 <h3 data-icon="delete"> Call to boss</h3>
                             </div>
@@ -105,7 +110,7 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="task-item">
                         <div class="ui-corner-all task-item">
                             <div class="ui-bar ui-bar-a">
                                 <h3>Fix bug 125</h3>
