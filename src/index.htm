@@ -7,153 +7,141 @@
     <title>To-Do List APP </title>
     <!--Favicon-->
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="shortcut icon" href="favicon.ico" />
     <!--JQuery Mobile styles-->
-    <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css"/>
-    <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
 </head>
 
 <body>
 
-<div data-role="page" id="todo-list-page" class="ui-content" data-title="To-Do List App">
-    <!-- Info Panel -->
-    <div data-role="panel" id="infoPanel">
-        <h3>About this app:</h3>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at turpis ac ipsum aliquet vulputate ac quis
-            leo. Cras nec elit porttitor orci mollis laoreet ac in justo. Duis cursus porta erat, eu efficitur risus.
-            Integer tincidunt neque a nisl aliquam scelerisque. Sed tempor gravida felis, sit amet vehicula quam
-            sollicitudin vitae. Fusce auctor mauris dolor, vel gravida est sollicitudin a. Etiam molestie massa purus,
-            eu semper mi ullamcorper ac. Vestibulum elementum, diam vel elementum laoreet, magna mi interdum lorem, non
-            aliquam ante magna eu nibh. Nunc libero lorem, sollicitudin sit amet erat eget, iaculis placerat nulla.
-            Praesent facilisis congue auctor.
-        </p>
-        <a href="#demo-links" data-rel="close"
-           class="ui-btn ui-shadow ui-corner-all ui-mini ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close
-            panel</a>
-    </div><!-- /Info Panel -->
-
-    <!-- Header -->
-    <div data-role="header">
-        <h1>To-Do List App <a href="#infoPanel"
-                              class="ui-shadow ui-mini ui-btn ui-corner-all ui-icon-info ui-btn-icon-right ui-btn-icon-notext">&nbsp;</a>
-        </h1>
-    </div>
-    <!-- /header -->
-
-    <div data-role="content">
-
-        <div data-role="collapsibleset" data-theme="a" data-content-theme="a" data-mini="true">
-            <!-- Create new Task Card-->
-            <div data-role="collapsible" data-mini="true" data-collapsed="false" data-expanded-icon="grid"
-                 data-collapsed-icon="grid">
-                <h3>Create new task</h3>
-                <!-- Create new Task Form-->
-                <div class="ui-body ui-body-a">
-
-                    <div data-role="ui-field-contain">
-                        <label for="txtTaskName">Task Name:</label>
-                        <input type="text" name="txtTaskName" id="txtTaskName" value="" placeholder="Task name"/>
-                    </div>
-
-                    <div data-role="ui-field-contain">
-                        <label for="txtTaskDescription">Task description:</label>
-                        <textarea cols="40" rows="8" name="txtTaskDescription" id="txtTaskDescription"
-                                  data-mini="true" placeholder="Task description"></textarea>
-                    </div>
-
-                    <div data-role="ui-field-contain">
-                        <label for="txtExpiredDate">Expired date:</label>
-                        <input type="date" name="txtExpiredDate" id="txtExpiredDate" value="">
-                    </div>
-                    <div data-role="ui-field-contain" class="form-buttons">
-                        <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input type="button" data-icon="check" value="Add new task">
-                            <input type="button" data-icon="delete" value="Clear form">
-                        </div>
-                    </div>
-                </div>
-                <!-- /Create new Task Form-->
-            </div><!-- /Create new Task Card-->
-            <!-- To-Do Cards -->
-            <div data-role="collapsible" data-mini="true" data-expanded-icon="tag" data-collapsed-icon="tag">
-                <h3>To-Do</h3>
-
-
-                <div class="dragMe">Test</div>
-
-                <div class="dop-zone">
-
-                </div>
-            </div><!-- /To-Do Cards -->
-            <!-- Doing Cards -->
-            <div data-role="collapsible" data-mini="true" data-expanded-icon="clock" data-collapsed-icon="clock">
-                <h3>Doing</h3>
-                <p>Doing list.</p>
-                <div class="dop-zone">
-
-                </div>
-            </div><!-- /Doing Cards -->
-            <!-- Done Cards -->
-            <div data-role="collapsible" data-mini="true" data-expanded-icon="heart" data-collapsed-icon="heart">
-                <h3>Done</h3>
-                <ul id="list" class="touch" data-role="listview" data-icon="false" data-split-icon="delete">
-                    <li class="task-item">
-                        <div class="ui-corner-all">
-                            <div class="ui-bar ui-bar-a">
-                                <h3 data-icon="delete"> Call to boss</h3>
-                            </div>
-                            <div class="ui-body ui-body-a">
-                                <p>Hey, call to your boss</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="task-item">
-                        <div class="ui-corner-all task-item">
-                            <div class="ui-bar ui-bar-a">
-                                <h3>Fix bug 125</h3>
-                            </div>
-                            <div class="ui-body ui-body-a">
-                                <p>This bug contains a pending review</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div><!-- /Done Cards -->
+    <div data-role="page" id="todo-list-page" class="ui-content" data-title="To-Do List App">
+        <!-- Info Panel -->
+        <div data-role="panel" id="infoPanel">
+            <h3>About this app:</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at turpis ac ipsum aliquet vulputate ac quis leo. Cras nec elit porttitor orci mollis laoreet ac in justo. Duis cursus porta erat, eu efficitur risus. Integer tincidunt neque a nisl aliquam scelerisque.
+                Sed tempor gravida felis, sit amet vehicula quam sollicitudin vitae. Fusce auctor mauris dolor, vel gravida est sollicitudin a. Etiam molestie massa purus, eu semper mi ullamcorper ac. Vestibulum elementum, diam vel elementum laoreet,
+                magna mi interdum lorem, non aliquam ante magna eu nibh. Nunc libero lorem, sollicitudin sit amet erat eget, iaculis placerat nulla. Praesent facilisis congue auctor.
+            </p>
+            <a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-mini ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close
+                panel</a>
         </div>
+        <!-- /Info Panel -->
+
+        <!-- Header -->
+        <div data-role="header">
+            <h1>To-Do List App <a href="#infoPanel" class="ui-shadow ui-mini ui-btn ui-corner-all ui-icon-info ui-btn-icon-right ui-btn-icon-notext">&nbsp;</a>
+            </h1>
+        </div>
+        <!-- /header -->
+
+        <div data-role="content">
+
+            <div data-role="collapsibleset" data-theme="a" data-content-theme="a" data-mini="true">
+                <!-- Create new Task Card-->
+                <div data-role="collapsible" data-mini="true" data-collapsed="false" data-expanded-icon="grid" data-collapsed-icon="grid">
+                    <h3>Create new task</h3>
+                    <!-- Create new Task Form-->
+                    <div class="ui-body ui-body-a">
+
+                        <div data-role="ui-field-contain">
+                            <label for="txtTaskName">Task Name:</label>
+                            <input type="text" name="txtTaskName" id="txtTaskName" value="" placeholder="Task name" />
+                        </div>
+
+                        <div data-role="ui-field-contain">
+                            <label for="txtTaskDescription">Task description:</label>
+                            <textarea cols="40" rows="8" name="txtTaskDescription" id="txtTaskDescription" data-mini="true" placeholder="Task description"></textarea>
+                        </div>
+
+                        <div data-role="ui-field-contain">
+                            <label for="txtExpiredDate">Expired date:</label>
+                            <input type="date" name="txtExpiredDate" id="txtExpiredDate" value="">
+                        </div>
+                        <div data-role="ui-field-contain" class="form-buttons">
+                            <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                <input type="button" data-icon="check" value="Add new task">
+                                <input type="button" data-icon="delete" value="Clear form">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Create new Task Form-->
+                </div>
+                <!-- /Create new Task Card-->
+                <!-- To-Do Cards -->
+                <div data-role="collapsible" data-mini="true" data-expanded-icon="tag" data-collapsed-icon="tag">
+                    <h3>To-Do <span class="ui-li-count">0</span></h3>
+                    <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true" data-split-icon="delete" data-panel-card-type="to-do">
+
+
+                </div>
+                <!-- /To-Do Cards -->
+                <!-- Doing Cards -->
+                <div data-role="collapsible" data-mini="true" data-expanded-icon="clock" data-collapsed-icon="clock">
+                    <h3>Doing <span class="ui-li-count">0</span></h3>
+                    <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true" data-split-icon="delete" data-panel-card-type="doing">
+
+                    </ul>
+
+
+                </div>
+                <!-- /Doing Cards -->
+                <!-- Done Cards -->
+                <div data-role="collapsible" data-mini="true" data-expanded-icon="heart" data-collapsed-icon="heart">
+                    <h3>Done <span class="ui-li-count">0</span></h3>
+
+
+                    <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true" data-split-icon="delete" data-panel-card-type="done">
+                        <li class="task-item">
+                            <a href="#">
+                                <h3>Call to boss 1</h3>
+                                <p>Call to the boss</p>
+                            </a>
+                            <a href="#" data-rel="close" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
+                        </li>
+                        <li class="task-item">
+                            <a href="#">
+                                <h3>Call to boss 2</h3>
+                                <p>Call to the boss</p>
+                            </a>
+                            <a href="#" data-rel="close" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <!-- /Done Cards -->
+            </div>
+
+
+        </div>
+        <!-- /content -->
 
 
     </div>
-    <!-- /content -->
+    <!-- /page -->
+
+    <!--Scripts-->
+    <script src="libs/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="libs/jquery.ui.touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script src="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(function() {
 
 
-</div>
-<!-- /page -->
 
-<!--Scripts-->
-<script src="libs/jQuery/jquery-1.12.4.min.js"></script>
-<script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-<script src="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script>
-    $(function () {
-
-        $('.task-item').draggable();
-        $(".dop-zone").droppable({
-            drop: function (event, ui) {
-                $(this).css('background', 'rgb(0,200,0)');
-                console.log('Drop...');
-            },
-            over: function (event, ui) {
-                $(this).css('background', 'orange');
-            },
-            out: function (event, ui) {
-                $(this).css('background', 'cyan');
-            }
+            $(".task-list-panel").sortable();
+            $(".task-list-panel").disableSelection();
+            $(".task-list-panel").bind("sortstop", function(event, ui) {
+                $(this).listview('refresh');
+            });
         });
-    });
-</script>
+    </script>
+
 </body>
 |
 
