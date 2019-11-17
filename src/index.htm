@@ -31,6 +31,20 @@
         </div>
         <!-- /Info Panel -->
 
+        <!-- Warnings popup-->
+        <div data-role="popup" id="warningsPopup" data-dismissible="false" style="max-width:400px;">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <div data-role="header">
+                <h1>Warning</h1>
+            </div>
+            <div role="main" class="ui-content" id="warningMessage">
+
+            </div>
+        </div>
+        <!-- /Warnings popup-->
+
+
+
         <!-- Header -->
         <div data-role="header">
             <h1>To-Do List App <a href="#infoPanel" class="ui-shadow ui-mini ui-btn ui-corner-all ui-icon-info ui-btn-icon-right ui-btn-icon-notext">&nbsp;</a>
@@ -46,12 +60,10 @@
                     <h3>Create new task</h3>
                     <!-- Create new Task Form-->
                     <div class="ui-body ui-body-a">
-
                         <div data-role="ui-field-contain">
                             <label for="txtTaskName">Task Name:</label>
                             <input type="text" name="txtTaskName" id="txtTaskName" value="" placeholder="Task name" />
                         </div>
-
                         <div data-role="ui-field-contain">
                             <label for="txtTaskDescription">Task description:</label>
                             <textarea cols="40" rows="8" name="txtTaskDescription" id="txtTaskDescription" data-mini="true" placeholder="Task description"></textarea>
@@ -63,8 +75,8 @@
                         </div>
                         <div data-role="ui-field-contain" class="form-buttons">
                             <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                                <input type="button" data-icon="check" value="Add new task">
-                                <input type="button" data-icon="delete" value="Clear form">
+                                <input type="button" data-icon="check" id="cmdAddTask" value="Add new task">
+                                <input type="button" data-icon="delete" id="cmdClearForm" value="Clear form">
                             </div>
                         </div>
                     </div>
@@ -130,20 +142,12 @@
     <script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
     <script src="libs/jquery.ui.touch-punch/jquery.ui.touch-punch.min.js"></script>
     <script src="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="scripts/app.js"></script>
     <script>
         $(function() {
-
-
-
-            $(".task-list-panel").sortable();
-            $(".task-list-panel").disableSelection();
-            $(".task-list-panel").bind("sortstop", function(event, ui) {
-                $(this).listview('refresh');
-            });
+            app.init();
         });
     </script>
-
 </body>
-|
 
 </html>
