@@ -74,56 +74,57 @@
                 <!-- To-Do Cards -->
                 <div data-role="collapsible" data-mini="true" data-expanded-icon="tag" data-collapsed-icon="tag">
                     <h3>To-Do <span class="ui-li-count">0</span></h3>
+                    <!-- Task panel-->
                     <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true" data-split-icon="delete" data-panel-card-type="to-do">
-
-
+                        <!-- /Task panel-->
                 </div>
                 <!-- /To-Do Cards -->
                 <!-- Doing Cards -->
                 <div data-role="collapsible" data-mini="true" data-expanded-icon="clock" data-collapsed-icon="clock">
                     <h3>Doing <span class="ui-li-count">0</span></h3>
-                    <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true" data-split-icon="delete" data-panel-card-type="doing">
-
-                    </ul>
-
-
+                    <!-- Task panel-->
+                    <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true" data-split-icon="delete" data-panel-card-type="doing"></ul>
+                    <!-- /Task panel-->
                 </div>
                 <!-- /Doing Cards -->
                 <!-- Done Cards -->
                 <div data-role="collapsible" data-mini="true" data-expanded-icon="heart" data-collapsed-icon="heart">
                     <h3>Done <span class="ui-li-count">0</span></h3>
-
-
+                    <!-- Task panel-->
                     <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true" data-split-icon="delete" data-panel-card-type="done">
                         <li class="task-item">
                             <a href="#">
                                 <h3>Call to boss 1</h3>
                                 <p>Call to the boss</p>
+                                <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                    <input type="button" data-icon="clock" data-iconpos="notext" value="Move task to doing">
+                                    <input type="button" data-icon="tag" data-iconpos="notext" value="Move task to to-do">
+                                    <input type="button" data-icon="edit" data-iconpos="notext" value="Move task to to-do">
+                                </div>
                             </a>
-                            <a href="#" data-rel="close" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
+                            <a href="#" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
                         </li>
                         <li class="task-item">
                             <a href="#">
-                                <h3>Call to boss 2</h3>
-                                <p>Call to the boss</p>
+                                <h3>Resolve bug 563</h3>
+                                <p>The bug 563 requires your attention</p>
+                                <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                    <input type="button" data-icon="clock" data-iconpos="notext" value="Move task to doing">
+                                    <input type="button" data-icon="tag" data-iconpos="notext" value="Move task to to-do">
+                                    <input type="button" data-icon="edit" data-iconpos="notext" value="Move task to to-do">
+                                </div>
                             </a>
-                            <a href="#" data-rel="close" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
+                            <a href="#" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
                         </li>
                     </ul>
-
-
+                    <!-- /Task panel-->
                 </div>
                 <!-- /Done Cards -->
             </div>
-
-
         </div>
         <!-- /content -->
-
-
     </div>
     <!-- /page -->
-
     <!--Scripts-->
     <script src="libs/jQuery/jquery-1.12.4.min.js"></script>
     <script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
