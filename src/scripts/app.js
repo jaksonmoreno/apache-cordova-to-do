@@ -11,10 +11,18 @@ appData = appData || {};
     };
 
     var localStorageRepository = {
-        create : function(task){},
-        read: function(filter){},
-        update: function(task){},
-        delete: function(taskId){}
+        create : function(task){
+
+        },
+        read: function(filter){
+
+        },
+        update: function(task){
+
+        },
+        delete: function(taskId){
+            
+        }
     };
 
     var configureEvents = function () {
