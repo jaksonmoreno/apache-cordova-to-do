@@ -1,5 +1,5 @@
 var app = app || {}
-var appData = JSON.parse(localStorage.getItem("todoData"));
+var appData = JSON.parse(localStorage.getItem("todoData-Tasks"));
 appData = appData || {};
 (function (app, data, $) {
 
@@ -8,6 +8,13 @@ appData = appData || {};
         New: "to-do",
         Doing: "doing",
         Done: "done",
+    };
+
+    var localStorageRepository = {
+        create : function(task){},
+        read: function(filter){},
+        update: function(task){},
+        delete: function(taskId){}
     };
 
     var configureEvents = function () {
@@ -25,7 +32,7 @@ appData = appData || {};
     };
 
     var rebind = function () {
-        var strData = localStorage.getItem("todoData", JSON.stringify(data));
+        var strData = localStorage.getItem("todoData-Tasks", JSON.stringify(data));
         data = JSON.parse(strData) || {};
         repaint();
     };
@@ -85,7 +92,7 @@ appData = appData || {};
             return;
         }
         data[newTask.id] = newTask;
-        localStorage.setItem("todoData", JSON.stringify(data));
+        localStorage.setItem("todoData-Tasks", JSON.stringify(data));
         clearForm();
         rebind();
     };
