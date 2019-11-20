@@ -26,6 +26,13 @@ ul.task-list-panel {
     margin: 5px;
 }
 
+.task-item-date{
+    color:rgb(0, 51, 153);
+    font-weight: bolder!important;
+    overflow: hidden;
+    text-overflow: ellipsis!important;
+    white-space: nowrap!important;
+}
 
 /* Test */
 

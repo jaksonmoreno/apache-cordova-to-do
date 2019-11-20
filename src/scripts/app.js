@@ -1,8 +1,8 @@
-var app = app || {}
-var appData = JSON.parse(localStorage.getItem("todoData-Tasks"));
-appData = appData || {};
-(function (app, data, $) {
-
+var app = app || {};
+//var appData = JSON.parse(localStorage.getItem("todoData-Tasks"));
+//appData = appData || {};
+(function (appContext, $) {
+    
     //ENUM:
     var taskStates = {
         New: "to-do",
@@ -12,16 +12,22 @@ appData = appData || {};
 
     var localStorageRepository = {
         create : function(task){
-
+            var data = this.read() || {};    
+            data[task.id || new Date().getTime()] = task;
+            localStorage.setItem("todoData-Tasks", JSON.stringify(data));
         },
         read: function(filter){
-
+            var strData = localStorage.getItem('todoData-Tasks');
+            var data = JSON.parse(strData) || {};
+            if(!filter){
+                return data;
+            }
         },
         update: function(task){
 
         },
         delete: function(taskId){
-            
+
         }
     };
 
@@ -39,13 +45,10 @@ appData = appData || {};
         rebind();
     };
 
-    var rebind = function () {
-        var strData = localStorage.getItem("todoData-Tasks", JSON.stringify(data));
-        data = JSON.parse(strData) || {};
-        repaint();
-    };
+    
 
-    var repaint = function () {
+    var rebind = function () {
+        var data = localStorageRepository.read();
         $.each(data, function (index, item) {
             bindTask(item);
         });
@@ -63,8 +66,10 @@ appData = appData || {};
             if(taskElement){
                 taskElement.appendTo(containerElement);   
             }
-
+            
         }
+        $(taskElement).trigger("create");
+        containerElement.listview('refresh');
 
         // switch (task.state) {
         //     case taskStates.New:
@@ -85,6 +90,8 @@ appData = appData || {};
         var workNode = template.clone();
         workNode.data('data-task-id', task.id);
         workNode.find('.task-item-title').html(task.title);
+        workNode.find('.task-item-description').html(task.description);
+        workNode.find('.task-item-date').html(task.expiredDate);        
         return workNode;
     }
 
@@ -99,8 +106,7 @@ appData = appData || {};
             showWarning("The new task must have a description")
             return;
         }
-        data[newTask.id] = newTask;
-        localStorage.setItem("todoData-Tasks", JSON.stringify(data));
+        localStorageRepository.create(newTask);
         clearForm();
         rebind();
     };
@@ -133,9 +139,16 @@ appData = appData || {};
     }
 
 
-    app.init = function () {
+    var expandPanel = function(forStatus){
+        var panelElement = $('[data-panel-card-type="' + task.state + '"]');;
+
+    }
+
+
+    appContext.init = function () {
+        console.log('Init...');
         configureEvents();
     };
 
 
-})(app, appData, jQuery);
+})(app, jQuery);
