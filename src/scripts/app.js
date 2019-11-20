@@ -141,7 +141,8 @@ var app = app || {};
 
     var expandPanel = function(forStatus){
         var panelElement = $('[data-panel-card-type="' + task.state + '"]');;
-
+        //$("#set").children(":last").trigger( "expand" );
+        //https://demos.jquerymobile.com/1.3.1/examples/collapsibles/dynamic-collapsible.html#&ui-state=dialog&ui-state=dialog
     }
 
 
