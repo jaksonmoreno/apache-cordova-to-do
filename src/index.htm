@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>To-Do List APP </title>
     <!--Favicon-->
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="shortcut icon" href="favicon.ico" />
     <!--JQuery Mobile styles-->
     <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
@@ -81,12 +81,12 @@
 
                         <div data-role="ui-field-contain">
                             <label for="txtExpiredDate">Expired date:</label>
-                            <input type="date" name="txtExpiredDate" id="txtExpiredDate" value="">
+                            <input type="date" name="txtExpiredDate" id="txtExpiredDate"  />
                         </div>
                         <div data-role="ui-field-contain" class="form-buttons">
                             <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                                <input type="button" data-icon="check" id="cmdAddTask" value="Add new task">
-                                <input type="button" data-icon="delete" id="cmdClearForm" value="Clear form">
+                                <input type="button" data-icon="check" id="cmdAddTask" value="Add new task" />
+                                <input type="button" data-icon="delete" id="cmdClearForm" value="Clear form" />
                             </div>
                         </div>
                     </div>
@@ -117,37 +117,6 @@
                     <!-- Task panel-->
                     <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
                         data-split-icon="delete" data-panel-card-type="done">
-                        <li class="task-item">
-                            <a href="#">
-                                <h3>Call to boss 1</h3>
-                                <p>Call to the boss</p>
-                                <p class="ui-li-aside">01/03/2019</p>
-                                <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                                    <input type="button" data-icon="clock" data-iconpos="notext"
-                                        value="Move task to doing">
-                                    <input type="button" data-icon="tag" data-iconpos="notext"
-                                        value="Move task to to-do">
-                                    <input type="button" data-icon="edit" data-iconpos="notext"
-                                        value="Move task to to-do">
-                                </div>
-                            </a>
-                            <a href="#" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
-                        </li>
-                        <li class="task-item">
-                            <a href="#">
-                                <h3>Resolve bug 563</h3>
-                                <p>The bug 563 requires your attention</p>
-                                <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                                    <input type="button" data-icon="clock" data-iconpos="notext"
-                                        value="Move task to doing">
-                                    <input type="button" data-icon="tag" data-iconpos="notext"
-                                        value="Move task to to-do">
-                                    <input type="button" data-icon="edit" data-iconpos="notext"
-                                        value="Move task to to-do">
-                                </div>
-                            </a>
-                            <a href="#" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
-                        </li>
                     </ul>
                     <!-- /Task panel-->
                 </div>
@@ -165,13 +134,34 @@
                     <p class="task-item-description"></p>
                     <p class="ui-li-aside task-item-date"></p>
                     <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input type="button" class="cmd-move-to-doing" data-icon="clock" data-iconpos="notext" value="Move task to doing">
-                        <input type="button" class="cmd-move-to-doing" data-icon="tag" data-iconpos="notext" value="Move task to to-do">
-                        <input type="button" class="cmd-move-to-edit"data-icon="edit" data-iconpos="notext" value="Edit">
+                        <input type="button" class="cmd-move-to-doing" data-icon="clock" data-iconpos="notext" value="Move task to doing" />
+                        <input type="button" class="cmd-move-to-doing" data-icon="tag" data-iconpos="notext" value="Move task to to-do" />
+                        <input type="button" class="cmd-move-to-edit"data-icon="edit" data-iconpos="notext" value="Edit" />
                     </div>
                 </a>
                 <a href="#" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
             </li>
+
+            
+            <!-- 
+                This is an example, dont remove comments!!!!
+                <li class="task-item">
+                <a href="#">
+                    <h3>Call to boss 1</h3>
+                    <p>Call to the boss</p>
+                    <p class="ui-li-aside">01/03/2019</p>
+                    <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                        <input type="button" data-icon="clock" data-iconpos="notext"
+                            value="Move task to doing">
+                        <input type="button" data-icon="tag" data-iconpos="notext"
+                            value="Move task to to-do">
+                        <input type="button" data-icon="edit" data-iconpos="notext"
+                            value="Move task to to-do">
+                    </div>
+                </a>
+                <a href="#" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
+            </li> -->
+
         </template>
     </aside>
     <!-- /Templates-->

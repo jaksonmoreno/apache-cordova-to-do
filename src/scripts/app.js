@@ -1,8 +1,7 @@
 var app = app || {};
-//var appData = JSON.parse(localStorage.getItem("todoData-Tasks"));
-//appData = appData || {};
+
 (function (appContext, $) {
-    
+
     //ENUM:
     var taskStates = {
         New: "to-do",
@@ -11,24 +10,20 @@ var app = app || {};
     };
 
     var localStorageRepository = {
-        create : function(task){
-            var data = this.read() || {};    
+        create: function (task) {
+            var data = this.read() || {};
             data[task.id || new Date().getTime()] = task;
             localStorage.setItem("todoData-Tasks", JSON.stringify(data));
         },
-        read: function(filter){
+        read: function (filter) {
             var strData = localStorage.getItem('todoData-Tasks');
             var data = JSON.parse(strData) || {};
-            if(!filter){
+            if (!filter) {
                 return data;
             }
         },
-        update: function(task){
-
-        },
-        delete: function(taskId){
-
-        }
+        update: function (task) {},
+        delete : function (taskId) {}
     };
 
     var configureEvents = function () {
@@ -45,8 +40,6 @@ var app = app || {};
         rebind();
     };
 
-    
-
     var rebind = function () {
         var data = localStorageRepository.read();
         $.each(data, function (index, item) {
@@ -55,43 +48,30 @@ var app = app || {};
     };
 
     var bindTask = function (task) {
-        var containerElement = $('[data-panel-card-type="' + task.state + '"]');;
+        var containerElement = $('[data-panel-card-type="' + task.state + '"]'); ;
         var taskElement = $('[data-task-id="' + task.id + '"]');
-        if(taskElement.length >0 ){
+        if (taskElement.length > 0) {
             //The task exists
-        }else{
+        } else {
             //Is new Task Element
             console.debug(containerElement);
             var taskElement = getTaskElement(task);
-            if(taskElement){
-                taskElement.appendTo(containerElement);   
+            if (taskElement) {
+                taskElement.appendTo(containerElement);
             }
-            
+
         }
         $(taskElement).trigger("create");
         containerElement.listview('refresh');
-
-        // switch (task.state) {
-        //     case taskStates.New:
-
-        //         break;
-        //     case taskStates.Doing:
-        //         break;
-        //     case taskStates.Done:
-        //         break;
-
-
-        // }
-
     };
 
-    var getTaskElement = function(task){
+    var getTaskElement = function (task) {
         var template = $($("#task-item-template")[0].content).children("li").first();
         var workNode = template.clone();
         workNode.data('data-task-id', task.id);
         workNode.find('.task-item-title').html(task.title);
         workNode.find('.task-item-description').html(task.description);
-        workNode.find('.task-item-date').html(task.expiredDate);        
+        workNode.find('.task-item-date').html(task.expiredDate);
         return workNode;
     }
 
@@ -113,10 +93,10 @@ var app = app || {};
     };
 
     var clearForm = function () {
-        var taskName = $("#txtTaskName").val("");
-        var taskDescription = $("#txtTaskDescription").val("");
-        var expiredDate = $("#txtExpiredDate").val("");
-        var taskName = $("#txtTaskName").focus();
+        $("#txtTaskName").val("");
+        $("#txtTaskDescription").val("");
+        $("#txtExpiredDate").val("");
+        $("#txtTaskName").focus();
     };
 
     var collectNewTaskData = function () {
@@ -139,22 +119,14 @@ var app = app || {};
         $("#warningsPopup").popup("open");
     }
 
-
-    var expandPanel = function(forStatus){
+    var expandPanel = function (forStatus) {
 
         var panel = $('#taskPanels').children('[data-panel-card="' + forStatus + '"]');
         panel.collapsible('expand')
-//data-panel-card
-        //var panelElement = $('[data-panel-card-type="' + forStatus + '"]').parent();
-        //parent.trigger('expand');
-        //$("#set").children(":last").trigger( "expand" );
-        //https://demos.jquerymobile.com/1.3.1/examples/collapsibles/dynamic-collapsible.html#&ui-state=dialog&ui-state=dialog
     }
-
 
     appContext.init = function () {
         configureEvents();
     };
-
 
 })(app, jQuery);
