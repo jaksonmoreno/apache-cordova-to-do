@@ -109,6 +109,7 @@ var app = app || {};
         localStorageRepository.create(newTask);
         clearForm();
         rebind();
+        expandPanel(taskStates.New)
     };
 
     var clearForm = function () {
@@ -140,14 +141,18 @@ var app = app || {};
 
 
     var expandPanel = function(forStatus){
-        var panelElement = $('[data-panel-card-type="' + task.state + '"]');;
+
+        var panel = $('#taskPanels').children('[data-panel-card="' + forStatus + '"]');
+        panel.collapsible('expand')
+//data-panel-card
+        //var panelElement = $('[data-panel-card-type="' + forStatus + '"]').parent();
+        //parent.trigger('expand');
         //$("#set").children(":last").trigger( "expand" );
         //https://demos.jquerymobile.com/1.3.1/examples/collapsibles/dynamic-collapsible.html#&ui-state=dialog&ui-state=dialog
     }
 
 
     appContext.init = function () {
-        console.log('Init...');
         configureEvents();
     };
 

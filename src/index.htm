@@ -62,7 +62,7 @@
 
         <div data-role="content">
 
-            <div data-role="collapsibleset" data-theme="a" data-content-theme="a" data-mini="true">
+            <div data-role="collapsibleset"  data-mini="true" id="taskPanels">
                 <!-- Create new Task Card-->
                 <div data-role="collapsible" data-mini="true" data-collapsed="false" data-expanded-icon="grid"
                     data-collapsed-icon="grid">
@@ -94,7 +94,7 @@
                 </div>
                 <!-- /Create new Task Card-->
                 <!-- To-Do Cards -->
-                <div data-role="collapsible" data-mini="true" data-expanded-icon="tag" data-collapsed-icon="tag">
+                <div data-role="collapsible" data-mini="true" data-expanded-icon="tag" data-collapsed-icon="tag" data-panel-card="to-do">
                     <h3>To-Do <span class="ui-li-count">0</span></h3>
                     <!-- Task panel-->
                     <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
@@ -103,7 +103,7 @@
                 </div>
                 <!-- /To-Do Cards -->
                 <!-- Doing Cards -->
-                <div data-role="collapsible" data-mini="true" data-expanded-icon="clock" data-collapsed-icon="clock">
+                <div data-role="collapsible" data-mini="true" data-expanded-icon="clock" data-collapsed-icon="clock" data-panel-card="doing" >
                     <h3>Doing <span class="ui-li-count">0</span></h3>
                     <!-- Task panel-->
                     <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
@@ -112,7 +112,7 @@
                 </div>
                 <!-- /Doing Cards -->
                 <!-- Done Cards -->
-                <div data-role="collapsible" data-mini="true" data-expanded-icon="heart" data-collapsed-icon="heart">
+                <div data-role="collapsible" data-mini="true" data-expanded-icon="heart" data-collapsed-icon="heart" data-panel-card="done">
                     <h3>Done <span class="ui-li-count">0</span></h3>
                     <!-- Task panel-->
                     <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
