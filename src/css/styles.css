@@ -18,6 +18,12 @@ body,
     /* inherit height without padding nor border */
 }
 
+div.panel-inner {
+    max-height: 200px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 div.form-buttons {
     text-align: right;
 }
