@@ -9,21 +9,30 @@ var app = app || {};
         Done: "done",
     };
 
+    //Data Repository
     var localStorageRepository = {
         create: function (task) {
-            var data = this.read() || {};
+            var data = this.read();
             data[task.id || new Date().getTime()] = task;
-            localStorage.setItem("todoData-Tasks", JSON.stringify(data));
+            this.adapter.write(data)
         },
         read: function (filter) {
-            var strData = localStorage.getItem('todoData-Tasks');
-            var data = JSON.parse(strData) || {};
+            var data = this.adapter.read();
             if (!filter) {
                 return data;
             }
         },
-        update: function (task) {},
-        delete : function (taskId) {}
+        update: function (task) { },
+        delete: function (taskId) { },
+        adapter: {
+            read: function () {
+                var data = localStorage.getItem('todoData-Tasks');
+                return JSON.parse(data) || {};
+            },
+            write: function (data) {
+                localStorage.setItem("todoData-Tasks", JSON.stringify(data));
+            }
+        }
     };
 
     var configureEvents = function () {
@@ -48,7 +57,7 @@ var app = app || {};
     };
 
     var bindTask = function (task) {
-        var containerElement = $('[data-panel-card-type="' + task.state + '"]'); ;
+        var containerElement = $('[data-panel-card-type="' + task.state + '"]');;
         var taskElement = $('[data-task-id="' + task.id + '"]');
         if (taskElement.length > 0) {
             //The task exists
