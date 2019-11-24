@@ -12,11 +12,9 @@
     <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
-
 </head>
 
 <body>
-
     <div data-role="page" id="todo-list-page" class="ui-content" data-title="To-Do List App">
         <!-- Info Panel -->
         <div data-role="panel" id="infoPanel">
@@ -36,7 +34,6 @@
                 panel</a>
         </div>
         <!-- /Info Panel -->
-
         <!-- Warnings popup-->
         <div data-role="popup" id="warningsPopup" data-dismissible="false" style="max-width:400px;">
             <a href="#" data-rel="back"
@@ -49,9 +46,6 @@
             </div>
         </div>
         <!-- /Warnings popup-->
-
-
-
         <!-- Header -->
         <div data-role="header">
             <h1>To-Do List App <a href="#infoPanel"
@@ -59,86 +53,80 @@
             </h1>
         </div>
         <!-- /header -->
-
         <div data-role="content">
-
             <div data-role="collapsibleset" data-mini="true" id="taskPanels">
                 <!-- Create new Task Card-->
                 <div data-role="collapsible" data-mini="true" data-collapsed="false" data-expanded-icon="grid"
                     data-collapsed-icon="grid">
                     <h3 class="ui-collapsible-heading">Create new task</h3>
+                    <!-- Create new Task Form-->
+                    <div class="panel-inner">
+                        <div data-role="ui-field-contain">
+                            <label for="txtTaskName">Task Name:</label>
+                            <input type="text" name="txtTaskName" id="txtTaskName" value="" placeholder="Task name" />
+                        </div>
+                        <div data-role="ui-field-contain">
+                            <label for="txtTaskDescription">Task description:</label>
+                            <textarea cols="40" rows="8" name="txtTaskDescription" id="txtTaskDescription"
+                                data-mini="true" placeholder="Task description"></textarea>
+                        </div>
 
-                    <div class="ui-collapsible-content ui-body ui-body-a">
-                        <!-- Create new Task Form-->
-                        <div class="panel-inner">
-                            <div data-role="ui-field-contain">
-                                <label for="txtTaskName">Task Name:</label>
-                                <input type="text" name="txtTaskName" id="txtTaskName" value=""
-                                    placeholder="Task name" />
-                            </div>
-                            <div data-role="ui-field-contain">
-                                <label for="txtTaskDescription">Task description:</label>
-                                <textarea cols="40" rows="8" name="txtTaskDescription" id="txtTaskDescription"
-                                    data-mini="true" placeholder="Task description"></textarea>
-                            </div>
-
-                            <div data-role="ui-field-contain">
-                                <label for="txtExpiredDate">Expired date:</label>
-                                <input type="date" name="txtExpiredDate" id="txtExpiredDate" />
-                            </div>
-                            <div data-role="ui-field-contain" class="form-buttons">
-                                <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                                    <input type="button" data-icon="check" id="cmdAddTask" value="Add new task" />
-                                    <input type="button" data-icon="delete" id="cmdClearForm" value="Clear form" />
-                                </div>
+                        <div data-role="ui-field-contain">
+                            <label for="txtExpiredDate">Expired date:</label>
+                            <input type="date" name="txtExpiredDate" id="txtExpiredDate" />
+                        </div>
+                        <div data-role="ui-field-contain" class="form-buttons">
+                            <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                <input type="button" data-icon="check" id="cmdAddTask" value="Add new task" />
+                                <input type="button" data-icon="delete" id="cmdClearForm" value="Clear form" />
                             </div>
                         </div>
-                        <!-- /Create new Task Form-->
                     </div>
+                    <!-- /Create new Task Form-->
                 </div>
                 <!-- /Create new Task Card-->
                 <!-- To-Do Cards -->
                 <div data-role="collapsible" data-mini="true" data-expanded-icon="tag" data-collapsed-icon="tag"
                     data-panel-card="to-do">
                     <h3 class="ui-collapsible-heading">To-Do <span class="ui-li-count">0</span></h3>
-                    <div class="ui-collapsible-content ui-body ui-body-a">
-                        <div class="panel-inner">
-                            <!-- Task panel [To-do] -->
-                            <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
-                                data-split-icon="delete" data-panel-card-type="to-do">
-                            </ul>
-                            <!-- /Task panel-->
-                        </div>
+
+                    <div class="panel-inner">
+                        <!-- Task panel [To-do] -->
+                        <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
+                            data-split-icon="delete" data-filter="true" data-panel-card-type="to-do">
+                        </ul>
+                        <!-- /Task panel-->
                     </div>
+
                 </div>
                 <!-- /To-Do Cards -->
                 <!-- Doing Cards -->
                 <div data-role="collapsible" data-mini="true" data-expanded-icon="clock" data-collapsed-icon="clock"
                     data-panel-card="doing">
                     <h3 class="ui-collapsible-heading">Doing <span class="ui-li-count">0</span></h3>
-                    <div class="ui-collapsible-content ui-body ui-body-a">
-                        <div class="panel-inner">
-                            <!-- Task panel [doing]-->
-                            <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
-                                data-split-icon="delete" data-panel-card-type="doing">
-                            </ul>
-                            <!-- /Task panel-->
-                        </div>
+
+                    <div class="panel-inner">
+                        <!-- Task panel [doing]-->
+                        <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
+                            data-split-icon="delete" data-filter="true" data-panel-card-type="doing">
+                        </ul>
+                        <!-- /Task panel-->
                     </div>
+
                 </div>
                 <!-- /Doing Cards -->
                 <!-- Done Cards -->
                 <div data-role="collapsible" data-mini="true" data-expanded-icon="heart" data-collapsed-icon="heart"
                     data-panel-card="done">
                     <h3 class="ui-collapsible-heading">Done <span class="ui-li-count">0</span></h3>
-                    <div class="ui-collapsible-content ui-body ui-body-a">
-                        <div class="panel-inner">
-                            <!-- Task panel-->
-                            <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
-                                data-split-icon="delete" data-panel-card-type="done">
-                            </ul>
-                            <!-- /Task panel-->
-                        </div>
+                    <div class="panel-inner">
+
+                        <!-- Task panel-->
+                        <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
+                            data-split-icon="delete" data-filter="true" data-panel-card-type="done">
+                        </ul>
+                        <!-- /Task panel-->
+
                     </div>
                 </div>
                 <!-- /Done Cards -->
