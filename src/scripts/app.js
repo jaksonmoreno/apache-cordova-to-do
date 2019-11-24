@@ -82,23 +82,24 @@ var app = app || {};
         workNode.find('.task-item-description').html(task.description);
         workNode.find('.task-item-date').html(task.expiredDate);
         return workNode;
-    }
+    };
 
     var addTask = function () {
-        console.log('Adding task');
-        var newTask = collectNewTaskData();
-        if (newTask.title.length < 1) {
-            showWarning("The new task must have a title")
-            return;
-        }
-        if (newTask.description.length < 1) {
-            showWarning("The new task must have a description")
-            return;
-        }
-        localStorageRepository.create(newTask);
-        clearForm();
-        rebind();
-        expandPanel(taskStates.New)
+        performOperation(function () {
+            var newTask = collectNewTaskData();
+            if (newTask.title.length < 1) {
+                showWarning("The new task must have a title")
+                return;
+            }
+            if (newTask.description.length < 1) {
+                showWarning("The new task must have a description")
+                return;
+            }
+            localStorageRepository.create(newTask);
+            clearForm();
+            rebind();
+            expandPanel(taskStates.New)
+        }, 'Adding new task...');
     };
 
     var clearForm = function () {
@@ -126,13 +127,35 @@ var app = app || {};
     var showWarning = function (message) {
         $("#warningMessage").html(message);
         $("#warningsPopup").popup("open");
-    }
+    };
 
     var expandPanel = function (forStatus) {
 
         var panel = $('#taskPanels').children('[data-panel-card="' + forStatus + '"]');
         panel.collapsible('expand')
-    }
+    };
+
+
+    var performOperation = function (operation, msg) {
+        if (typeof operation !== 'function') return;
+        console.log(msg);
+        showLoading(msg);
+        operation.apply();
+        hideLoading();
+    };
+
+
+    var showLoading = function (msg) {
+        console.log(msg + " loading");
+        $.mobile.loading("show", {
+            text: msg,
+            textVisible: true,
+        });
+    };
+
+    var hideLoading = function () {
+        $.mobile.loading("hide");
+    };
 
     appContext.init = function () {
         configureEvents();
