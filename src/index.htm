@@ -46,6 +46,15 @@
             </div>
         </div>
         <!-- /Warnings popup-->
+        <!--Delete task confirm popup-->
+        <div data-role="popup" id="deleteConfirm" data-theme="a" data-overlay-theme="b" class="ui-content"
+            style="max-width:340px; padding-bottom:2em;">
+            <h3>Delete task?</h3>
+            <p>Once deleted, it cannot be recovered.</p>
+            <a href="#" id="cmdDeleteTask" class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">Yes</a>
+            <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+        </div>
+        <!--/Delete task confirm popup-->
         <!-- Header -->
         <div data-role="header">
             <h1>To-Do List App <a href="#infoPanel"
@@ -104,7 +113,6 @@
                 <div data-role="collapsible" data-mini="true" data-expanded-icon="clock" data-collapsed-icon="clock"
                     data-panel-card="doing">
                     <h3 class="ui-collapsible-heading">Doing <span class="ui-li-count">0</span></h3>
-
                     <div class="panel-inner">
                         <!-- Task panel [doing]-->
                         <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
@@ -151,7 +159,7 @@
                             value="Edit" />
                     </div>
                 </a>
-                <a href="#" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
+                <a href="#deleteConfirm" class="task-delete-comand" data-rel="popup" data-position-to="window" data-transition="pop">Confirm!</a>
             </li>
 
 

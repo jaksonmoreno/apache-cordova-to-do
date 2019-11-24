@@ -46,6 +46,7 @@ var app = app || {};
         $("#cmdAddTask").on("click", addTask);
         //Clear form event
         $("#cmdClearForm").on("click", clearForm);
+        $("#cmdDeleteTask").on("click", deleteTask);
         rebind();
     };
 
@@ -53,6 +54,13 @@ var app = app || {};
         var data = localStorageRepository.read();
         $.each(data, function (index, item) {
             bindTask(item);
+        });
+        refreshListViews();
+    };
+
+    var refreshListViews = function(){
+        $('[data-role="listview"]').each(function(index){
+            //$(this).listview('refresh');
         });
     };
 
@@ -63,15 +71,14 @@ var app = app || {};
             //The task exists
         } else {
             //Is new Task Element
-            console.debug(containerElement);
+            console.log("....");
             var taskElement = getTaskElement(task);
             if (taskElement) {
                 taskElement.appendTo(containerElement);
             }
 
         }
-        $(taskElement).trigger("create");
-        containerElement.listview('refresh');
+        $(taskElement).trigger("create");        
     };
 
     var getTaskElement = function (task) {
@@ -81,6 +88,7 @@ var app = app || {};
         workNode.find('.task-item-title').html(task.title);
         workNode.find('.task-item-description').html(task.description);
         workNode.find('.task-item-date').html(task.expiredDate);
+        workNode.find('.task-delete-comand').attr('data-id', task.id)
         return workNode;
     };
 
@@ -101,6 +109,12 @@ var app = app || {};
             expandPanel(taskStates.New)
         }, 'Adding new task...');
     };
+
+    var deleteTask = function(){
+        console.log('Delete task');
+
+    };
+
 
     var clearForm = function () {
         $("#txtTaskName").val("");
