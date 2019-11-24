@@ -47,6 +47,11 @@ var app = app || {};
         //Clear form event
         $("#cmdClearForm").on("click", clearForm);
         $("#cmdDeleteTask").on("click", deleteTask);
+        $( "#deleteConfirm" ).bind({
+            popupafterclose: function(event, ui) {
+                console.log('close')
+              }
+         });
         rebind();
     };
 
@@ -60,7 +65,7 @@ var app = app || {};
 
     var refreshListViews = function(){
         $('[data-role="listview"]').each(function(index){
-            //$(this).listview('refresh');
+            $(this).listview('refresh');
         });
     };
 
@@ -71,12 +76,10 @@ var app = app || {};
             //The task exists
         } else {
             //Is new Task Element
-            console.log("....");
             var taskElement = getTaskElement(task);
             if (taskElement) {
                 taskElement.appendTo(containerElement);
             }
-
         }
         $(taskElement).trigger("create");        
     };
@@ -111,8 +114,11 @@ var app = app || {};
     };
 
     var deleteTask = function(){
-        console.log('Delete task');
+        var el = $("#deleteConfirm");
+        var x = el.data('id');
+        console.debug(el);
 
+        el.popup( "close" );
     };
 
 

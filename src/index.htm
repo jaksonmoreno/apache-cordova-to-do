@@ -47,12 +47,17 @@
         </div>
         <!-- /Warnings popup-->
         <!--Delete task confirm popup-->
-        <div data-role="popup" id="deleteConfirm" data-theme="a" data-overlay-theme="b" class="ui-content"
-            style="max-width:340px; padding-bottom:2em;">
-            <h3>Delete task?</h3>
-            <p>Once deleted, it cannot be recovered.</p>
-            <a href="#" id="cmdDeleteTask" class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">Yes</a>
-            <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+        <div data-role="popup" id="deleteConfirm" data-dismissible="false" style="max-width:340px; padding-bottom:2em;">
+            <div data-role="header" data-theme="a">
+                <h2>Delete task?</h2>
+            </div>
+            <div role="main" class="ui-content">
+                <p>Once deleted, it cannot be recovered.</p>
+                <a href="#" id="cmdDeleteTask"
+                    class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">Yes</a>
+                <a href="index.html" data-rel="back"
+                    class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+            </div>
         </div>
         <!--/Delete task confirm popup-->
         <!-- Header -->
@@ -159,7 +164,8 @@
                             value="Edit" />
                     </div>
                 </a>
-                <a href="#deleteConfirm" class="task-delete-comand" data-rel="popup" data-position-to="window" data-transition="pop">Confirm!</a>
+                <a href="#deleteConfirm" class="task-delete-comand" data-rel="popup" data-position-to="window"
+                    data-transition="pop">Confirm!</a>
             </li>
 
 
