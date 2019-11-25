@@ -19,7 +19,7 @@ body,
 }
 
 div.panel-inner {
-    max-height: 300px;
+    max-height: 350px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 }

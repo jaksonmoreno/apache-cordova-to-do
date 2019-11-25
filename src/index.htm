@@ -89,6 +89,17 @@
                             <label for="txtExpiredDate">Expired date:</label>
                             <input type="date" name="txtExpiredDate" id="txtExpiredDate" />
                         </div>
+                        <div data-role="ui-field-contain">
+                            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" id="radioListState">
+                                <legend>Task state:</legend>
+                                <input type="radio" name="radio-task-state" id="radio-task-state-todo" value="to-do" />
+                                <label for="radio-task-state-todo">To-Do</label>
+                                <input type="radio" name="radio-task-state" id="radio-task-state-doing" value="doing" />
+                                <label for="radio-task-state-doing">Doing</label>
+                                <input type="radio" name="radio-task-state" id="radio-task-state-done" value="done" />
+                                <label for="radio-task-state-done">Done</label>
+                            </fieldset>
+                        </div>
                         <div data-role="ui-field-contain" class="form-buttons">
                             <div data-role="controlgroup" data-type="horizontal" data-mini="true">
                                 <input type="button" data-icon="check" id="cmdAddTask" value="Add new task" />

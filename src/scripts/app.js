@@ -111,7 +111,7 @@ var app = app || {};
             localStorageRepository.create(newTask);
             clearForm();
             rebind();
-            expandPanel(taskStates.New)
+            expandPanel(newTask.state)
         }, 'Adding new task...');
     };
     var prepareTaskForDelete = function (e) {
@@ -143,6 +143,12 @@ var app = app || {};
         $("#txtTaskName").val("");
         $("#txtTaskDescription").val("");
         $("#txtExpiredDate").val("");
+        $("#radioListState input[type='radio']").each(function(index, item){
+            $(item).attr('checked', false);
+            $("#radioListState div.ui-radio label")
+            .removeClass('ui-radio-on')
+            .removeClass('ui-btn-active');
+        });
         $("#txtTaskName").focus();
     };
     var collectNewTaskData = function () {
@@ -150,7 +156,12 @@ var app = app || {};
         var taskName = $("#txtTaskName").val();
         var taskDescription = $("#txtTaskDescription").val();
         var expiredDate = $("#txtExpiredDate").val();
-        var state = taskStates.New;
+        var selectedStateEl = $("#radioListState input[type='radio']:checked");
+        var selectedState = taskStates.New
+        if(selectedStateEl.length >0){
+            selectedState = selectedStateEl.val();
+        }
+        var state = selectedState;
         return {
             id: id,
             title: taskName,
