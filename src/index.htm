@@ -156,11 +156,13 @@
                     <p class="task-item-description"></p>
                     <p class="ui-li-aside task-item-date"></p>
                     <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input type="button" class="cmd-move-to-doing" data-icon="clock" data-iconpos="notext"
-                            value="Move task to doing" />
-                        <input type="button" class="cmd-move-to-doing" data-icon="tag" data-iconpos="notext"
-                            value="Move task to to-do" />
-                        <input type="button" class="cmd-move-to-edit" data-icon="edit" data-iconpos="notext"
+                        <input type="button" class="cmd-move-to-to-do move-task" data-icon="tag" data-iconpos="notext"
+                            value="Move task to to-do" data-move-to="to-do" />
+                        <input type="button" class="cmd-move-to-doing move-task" data-icon="clock" data-iconpos="notext"
+                            value="Move task to doing" data-move-to="doing" />
+                        <input type="button" class="cmd-move-to-done move-task" data-icon="check" data-iconpos="notext"
+                            value="Move task to doing" data-move-to="done" />
+                        <input type="button" class="cmd-move-to-edit edit-task" data-icon="edit" data-iconpos="notext"
                             value="Edit" />
                     </div>
                 </a>

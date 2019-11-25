@@ -1,37 +1,39 @@
 var app = app || {};
-
 (function (appContext, $) {
-
-    //ENUM:
     var taskStates = {
         New: "to-do",
         Doing: "doing",
         Done: "done",
     };
-
     var cacheResult = {
         lastIdForDelete: null
     };
-
-    //Data Repository
     var localStorageRepository = {
         create: function (task) {
             var data = this.read();
             data[task.id || new Date().getTime()] = task;
-            this.adapter.write(data)
+            this.adapter.write(data);
         },
         read: function (filter) {
             var data = this.adapter.read();
-            if (!filter) {
+            if (typeof filter === 'undefined') {
                 return data;
-            }
+            };
+            if (typeof filter === 'number') {
+                return data[filter];
+            };
+            return {};
         },
-        update: function (task) { },
-        delete: function (taskId) {
+        update: function (task) {
+            var data = this.adapter.read();
+            data[task.id] = task;
+            this.adapter.write(data);
+        },
+        delete : function (taskId) {
             var data = this.adapter.read();
             delete data[taskId];
             this.adapter.write(data);
-         },
+        },
         adapter: {
             read: function () {
                 var data = localStorage.getItem('todoData-Tasks');
@@ -42,25 +44,20 @@ var app = app || {};
             }
         }
     };
-
     var configureEvents = function () {
-        //Sortable
         $(".task-list-panel").sortable();
         $(".task-list-panel").disableSelection();
         $(".task-list-panel").bind("sortstop", function (event, ui) {
             $(this).listview('refresh');
         });
-        //Add task event
         $("#cmdAddTask").on("click", addTask);
-        //Clear form event
         $("#cmdClearForm").on("click", clearForm);
         $("#cmdCancelDelete").on("click", cancelDeleteTask);
-        $("#cmdDeleteTask").on("click",deleteTask);
+        $("#cmdDeleteTask").on("click", deleteTask);
         $(document).on("click", '.task-delete-comand', prepareTaskForDelete);
-
+        $(document).on("click", '.move-task', moveTask);
         rebind();
     };
-
     var rebind = function () {
         clearTaskLists();
         var data = localStorageRepository.read();
@@ -69,23 +66,19 @@ var app = app || {};
         });
         refreshListViews();
     };
-
     var refreshListViews = function () {
         $('[data-role="listview"]').each(function (index) {
             $(this).listview('refresh');
         });
     };
-    
-    var clearTaskLists = function(){ 
+    var clearTaskLists = function () {
         $(".task-list-panel").empty();
     };
     var bindTask = function (task) {
-        var containerElement = $('[data-panel-card-type="' + task.state + '"]');;
+        var containerElement = $('[data-panel-card-type="' + task.state + '"]'); ;
         var taskElement = $('[data-task-id="' + task.id + '"]');
-        if (taskElement.length > 0) {
-            //The task exists
-        } else {
-            //Is new Task Element
+        if (taskElement.length > 0) {}
+        else {
             var taskElement = getTaskElement(task);
             if (taskElement) {
                 taskElement.appendTo(containerElement);
@@ -93,18 +86,16 @@ var app = app || {};
         }
         $(taskElement).trigger("create");
     };
-
     var getTaskElement = function (task) {
         var template = $($("#task-item-template")[0].content).children("li").first();
         var workNode = template.clone();
-        workNode.data('data-task-id', task.id);
+        workNode.data('taskId', task.id);
         workNode.find('.task-item-title').html(task.title);
         workNode.find('.task-item-description').html(task.description);
         workNode.find('.task-item-date').html(task.expiredDate);
-        workNode.find('.task-delete-comand').attr('data-id', task.id)
+        workNode.find('.task-delete-comand').attr('data-id', task.id);
         return workNode;
     };
-
     var addTask = function () {
         performOperation(function () {
             var newTask = collectNewTaskData();
@@ -122,33 +113,37 @@ var app = app || {};
             expandPanel(taskStates.New)
         }, 'Adding new task...');
     };
-
     var prepareTaskForDelete = function (e) {
         var taskId = $(this).attr('data-id');
         cacheResult.lastIdForDelete = taskId;
     };
-
     var deleteTask = function (e) {
-        if(cacheResult.lastIdForDelete && cacheResult.lastIdForDelete >0){
+        if (cacheResult.lastIdForDelete && cacheResult.lastIdForDelete > 0) {
             localStorageRepository.delete(cacheResult.lastIdForDelete);
             cacheResult.lastIdForDelete = null;
             rebind();
-        }else{
+        } else {
             console.log('Nothing for delete');
         }
     };
-
     var cancelDeleteTask = function (e) {
         cacheResult.lastIdForDelete = null;
     };
-
+    var moveTask = function (e) {
+        var taskElement = $(this).parents('li.task-item');
+        var taskId = taskElement.data('taskId');
+        var task = localStorageRepository.read(taskId);
+        var moveTo = $(this).data("move-to");
+        task.state = moveTo;
+        localStorageRepository.update(task);
+        rebind();
+    };
     var clearForm = function () {
         $("#txtTaskName").val("");
         $("#txtTaskDescription").val("");
         $("#txtExpiredDate").val("");
         $("#txtTaskName").focus();
     };
-
     var collectNewTaskData = function () {
         var id = new Date().getTime();
         var taskName = $("#txtTaskName").val();
@@ -163,46 +158,32 @@ var app = app || {};
             state: state
         };
     };
-
     var showWarning = function (message) {
         $("#warningMessage").html(message);
         $("#warningsPopup").popup("open");
     };
-
     var expandPanel = function (forStatus) {
-
         var panel = $('#taskPanels').children('[data-panel-card="' + forStatus + '"]');
         panel.collapsible('expand')
     };
-
-
     var performOperation = function (operation, msg) {
-        if (typeof operation !== 'function') return;
+        if (typeof operation !== 'function')
+            return;
         console.log(msg);
         showLoading(msg);
         operation.apply();
         hideLoading();
     };
-
-
     var showLoading = function (msg) {
-        console.log(msg + " loading");
         $.mobile.loading("show", {
             text: msg,
             textVisible: true,
         });
     };
-
     var hideLoading = function () {
         $.mobile.loading("hide");
     };
-
-    appContext.getCache = function () {
-        return cacheResult;
-    };
-
     appContext.init = function () {
         configureEvents();
     };
-
 })(app, jQuery);
