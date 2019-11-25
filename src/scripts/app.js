@@ -9,6 +9,10 @@ var app = app || {};
         Done: "done",
     };
 
+    var cacheResult = {
+        lastIdForDelete: null
+    };
+
     //Data Repository
     var localStorageRepository = {
         create: function (task) {
@@ -23,7 +27,11 @@ var app = app || {};
             }
         },
         update: function (task) { },
-        delete: function (taskId) { },
+        delete: function (taskId) {
+            var data = this.adapter.read();
+            delete data[taskId];
+            this.adapter.write(data);
+         },
         adapter: {
             read: function () {
                 var data = localStorage.getItem('todoData-Tasks');
@@ -46,16 +54,15 @@ var app = app || {};
         $("#cmdAddTask").on("click", addTask);
         //Clear form event
         $("#cmdClearForm").on("click", clearForm);
-        $("#cmdDeleteTask").on("click", deleteTask);
-        $( "#deleteConfirm" ).bind({
-            popupafterclose: function(event, ui) {
-                console.log('close')
-              }
-         });
+        $("#cmdCancelDelete").on("click", cancelDeleteTask);
+        $("#cmdDeleteTask").on("click",deleteTask);
+        $(document).on("click", '.task-delete-comand', prepareTaskForDelete);
+
         rebind();
     };
 
     var rebind = function () {
+        clearTaskLists();
         var data = localStorageRepository.read();
         $.each(data, function (index, item) {
             bindTask(item);
@@ -63,12 +70,15 @@ var app = app || {};
         refreshListViews();
     };
 
-    var refreshListViews = function(){
-        $('[data-role="listview"]').each(function(index){
+    var refreshListViews = function () {
+        $('[data-role="listview"]').each(function (index) {
             $(this).listview('refresh');
         });
     };
-
+    
+    var clearTaskLists = function(){ 
+        $(".task-list-panel").empty();
+    };
     var bindTask = function (task) {
         var containerElement = $('[data-panel-card-type="' + task.state + '"]');;
         var taskElement = $('[data-task-id="' + task.id + '"]');
@@ -81,7 +91,7 @@ var app = app || {};
                 taskElement.appendTo(containerElement);
             }
         }
-        $(taskElement).trigger("create");        
+        $(taskElement).trigger("create");
     };
 
     var getTaskElement = function (task) {
@@ -113,14 +123,24 @@ var app = app || {};
         }, 'Adding new task...');
     };
 
-    var deleteTask = function(){
-        var el = $("#deleteConfirm");
-        var x = el.data('id');
-        console.debug(el);
-
-        el.popup( "close" );
+    var prepareTaskForDelete = function (e) {
+        var taskId = $(this).attr('data-id');
+        cacheResult.lastIdForDelete = taskId;
     };
 
+    var deleteTask = function (e) {
+        if(cacheResult.lastIdForDelete && cacheResult.lastIdForDelete >0){
+            localStorageRepository.delete(cacheResult.lastIdForDelete);
+            cacheResult.lastIdForDelete = null;
+            rebind();
+        }else{
+            console.log('Nothing for delete');
+        }
+    };
+
+    var cancelDeleteTask = function (e) {
+        cacheResult.lastIdForDelete = null;
+    };
 
     var clearForm = function () {
         $("#txtTaskName").val("");
@@ -175,6 +195,10 @@ var app = app || {};
 
     var hideLoading = function () {
         $.mobile.loading("hide");
+    };
+
+    appContext.getCache = function () {
+        return cacheResult;
     };
 
     appContext.init = function () {

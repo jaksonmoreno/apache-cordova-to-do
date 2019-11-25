@@ -53,9 +53,9 @@
             </div>
             <div role="main" class="ui-content">
                 <p>Once deleted, it cannot be recovered.</p>
-                <a href="#" id="cmdDeleteTask"
+                <a href="index.html" data-rel="back" id="cmdDeleteTask"
                     class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">Yes</a>
-                <a href="index.html" data-rel="back"
+                <a href="index.html" data-rel="back" id="cmdCancelDelete"
                     class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
             </div>
         </div>
@@ -106,7 +106,7 @@
 
                     <div class="panel-inner">
                         <!-- Task panel [To-do] -->
-                        <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
+                        <ul id="list-of-to-do" class="touch task-list-panel" data-role="listview" data-inset="true"
                             data-split-icon="delete" data-filter="true" data-panel-card-type="to-do">
                         </ul>
                         <!-- /Task panel-->
@@ -120,7 +120,7 @@
                     <h3 class="ui-collapsible-heading">Doing <span class="ui-li-count">0</span></h3>
                     <div class="panel-inner">
                         <!-- Task panel [doing]-->
-                        <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
+                        <ul id="list-of-doing" class="touch task-list-panel" data-role="listview" data-inset="true"
                             data-split-icon="delete" data-filter="true" data-panel-card-type="doing">
                         </ul>
                         <!-- /Task panel-->
@@ -135,7 +135,7 @@
                     <div class="panel-inner">
 
                         <!-- Task panel-->
-                        <ul id="list" class="touch task-list-panel" data-role="listview" data-inset="true"
+                        <ul id="list-of-done" class="touch task-list-panel" data-role="listview" data-inset="true"
                             data-split-icon="delete" data-filter="true" data-panel-card-type="done">
                         </ul>
                         <!-- /Task panel-->
