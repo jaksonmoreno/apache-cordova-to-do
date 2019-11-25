@@ -93,7 +93,8 @@ var app = app || {};
         workNode.find('.task-item-title').html(task.title);
         workNode.find('.task-item-description').html(task.description);
         workNode.find('.task-item-date').html(task.expiredDate);
-        workNode.find('.task-delete-comand').attr('data-id', task.id);
+        workNode.find('.task-delete-comand').attr('data-id', task.id);       
+        workNode.find('[data-move-to="' + task.state + '"]').remove();        
         return workNode;
     };
     var addTask = function () {
