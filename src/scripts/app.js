@@ -6,7 +6,8 @@ var app = app || {};
         Done: "done",
     };
     var cacheResult = {
-        lastIdForDelete: null
+        lastIdForDelete: null,
+        lastEditTask: null
     };
     var localStorageRepository = {
         create: function (task) {
@@ -29,7 +30,7 @@ var app = app || {};
             data[task.id] = task;
             this.adapter.write(data);
         },
-        delete : function (taskId) {
+        delete: function (taskId) {
             var data = this.adapter.read();
             delete data[taskId];
             this.adapter.write(data);
@@ -56,6 +57,7 @@ var app = app || {};
         $("#cmdDeleteTask").on("click", deleteTask);
         $(document).on("click", '.task-delete-comand', prepareTaskForDelete);
         $(document).on("click", '.move-task', moveTask);
+        $(document).on("click", '.edit-task', performEditTask);
         rebind();
     };
     var rebind = function () {
@@ -75,9 +77,9 @@ var app = app || {};
         $(".task-list-panel").empty();
     };
     var bindTask = function (task) {
-        var containerElement = $('[data-panel-card-type="' + task.state + '"]'); ;
+        var containerElement = $('[data-panel-card-type="' + task.state + '"]');;
         var taskElement = $('[data-task-id="' + task.id + '"]');
-        if (taskElement.length > 0) {}
+        if (taskElement.length > 0) { }
         else {
             var taskElement = getTaskElement(task);
             if (taskElement) {
@@ -93,8 +95,8 @@ var app = app || {};
         workNode.find('.task-item-title').html(task.title);
         workNode.find('.task-item-description').html(task.description);
         workNode.find('.task-item-date').html(task.expiredDate);
-        workNode.find('.task-delete-comand').attr('data-id', task.id);       
-        workNode.find('[data-move-to="' + task.state + '"]').remove();        
+        workNode.find('.task-delete-comand').attr('data-id', task.id);
+        workNode.find('[data-move-to="' + task.state + '"]').remove();
         return workNode;
     };
     var addTask = function () {
@@ -139,16 +141,33 @@ var app = app || {};
         localStorageRepository.update(task);
         rebind();
     };
+    var performEditTask = function (e) {
+        var taskElement = $(this).parents('li.task-item');
+        var taskId = taskElement.data('taskId');
+        var task = localStorageRepository.read(taskId);
+        localStorageRepository.delete(taskId);
+        cacheResult.lastEditTask = task;
+        prepareTaskForEdit(task);
+    };
+    var prepareTaskForEdit = function (task) {
+        if (typeof task !== 'undefined' && task != null) {
+            $('#txtTaskName').val(task.title);
+            $('#txtTaskDescription').val(task.description);
+            $('#txtExpiredDate').val(task.expiredDate);
+            $("input[name='radio-task-state'][value=" + task.state + "]").attr('checked', 'checked').checkboxradio( "refresh" );
+            refreshControlGroup('radioListState');            
+            $("#cmdClearForm").val('Cancel edit task').button("refresh");
+            $("#cmdAddTask").val('Save').button("refresh");
+            $("#txtTaskName").focus();
+            expandPanel('edit');
+        }
+    };
     var clearForm = function () {
         $("#txtTaskName").val("");
         $("#txtTaskDescription").val("");
         $("#txtExpiredDate").val("");
-        $("#radioListState input[type='radio']").each(function(index, item){
-            $(item).attr('checked', false);
-            $("#radioListState div.ui-radio label")
-            .removeClass('ui-radio-on')
-            .removeClass('ui-btn-active');
-        });
+        $("#radioListState input[type='radio']").attr('checked', false);
+        refreshControlGroup('radioListState');
         $("#txtTaskName").focus();
     };
     var collectNewTaskData = function () {
@@ -158,7 +177,7 @@ var app = app || {};
         var expiredDate = $("#txtExpiredDate").val();
         var selectedStateEl = $("#radioListState input[type='radio']:checked");
         var selectedState = taskStates.New
-        if(selectedStateEl.length >0){
+        if (selectedStateEl.length > 0) {
             selectedState = selectedStateEl.val();
         }
         var state = selectedState;
@@ -177,6 +196,9 @@ var app = app || {};
     var expandPanel = function (forStatus) {
         var panel = $('#taskPanels').children('[data-panel-card="' + forStatus + '"]');
         panel.collapsible('expand')
+    };
+    var refreshControlGroup = function (id) {
+        $("#" + id).controlgroup('refresh');
     };
     var performOperation = function (operation, msg) {
         if (typeof operation !== 'function')

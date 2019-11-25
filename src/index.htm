@@ -71,7 +71,7 @@
             <div data-role="collapsibleset" data-mini="true" id="taskPanels">
                 <!-- Create new Task Card-->
                 <div data-role="collapsible" data-mini="true" data-collapsed="false" data-expanded-icon="grid"
-                    data-collapsed-icon="grid">
+                    data-collapsed-icon="grid" data-panel-card="edit">
                     <h3 class="ui-collapsible-heading">Create new task</h3>
                     <!-- Create new Task Form-->
                     <div class="panel-inner">
@@ -101,7 +101,7 @@
                             </fieldset>
                         </div>
                         <div data-role="ui-field-contain" class="form-buttons">
-                            <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                            <div data-role="controlgroup" data-type="horizontal" data-mini="true" id="editFormCommands">
                                 <input type="button" data-icon="check" id="cmdAddTask" value="Add new task" />
                                 <input type="button" data-icon="delete" id="cmdClearForm" value="Clear form" />
                             </div>
@@ -180,27 +180,6 @@
                 <a href="#deleteConfirm" class="task-delete-comand" data-rel="popup" data-position-to="window"
                     data-transition="pop">Confirm!</a>
             </li>
-
-
-            <!-- 
-                This is an example, dont remove comments!!!!
-                <li class="task-item">
-                <a href="#">
-                    <h3>Call to boss 1</h3>
-                    <p>Call to the boss</p>
-                    <p class="ui-li-aside">01/03/2019</p>
-                    <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input type="button" data-icon="clock" data-iconpos="notext"
-                            value="Move task to doing">
-                        <input type="button" data-icon="tag" data-iconpos="notext"
-                            value="Move task to to-do">
-                        <input type="button" data-icon="edit" data-iconpos="notext"
-                            value="Move task to to-do">
-                    </div>
-                </a>
-                <a href="#" class="ui-btn ui-mini ui-btn-a ui-icon-delete">Remove task</a>
-            </li> -->
-
         </template>
     </aside>
     <!-- /Templates-->
