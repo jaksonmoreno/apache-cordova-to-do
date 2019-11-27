@@ -1,0 +1,57 @@
+html,
+body,
+#todo-list-page {
+    height: 95%;
+    margin: 0;
+    padding: 0;
+}
+
+#todo-list-page,
+#todo-list-page * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#todo-list-page .ui-content {
+    height: inherit;
+    /* inherit height without padding nor border */
+}
+
+div.panel-inner {
+    max-height: 350px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+div.form-buttons {
+    text-align: right;
+}
+
+ul.task-list-panel {
+    margin: 5px;
+}
+
+.task-item-date {
+    color: rgb(0, 51, 153);
+    font-weight: bolder !important;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+/* Test */
+
+div.dop-zone {
+    height: 50px;
+    width: 50px;
+    background-color: cyan;
+    border: solid 1px red;
+}
+
+.dragMe {
+    width: 20px;
+    height: 20px;
+    cursor: move;
+    color: red;
+}

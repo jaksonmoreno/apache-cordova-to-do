@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>To-Do List APP </title>
+    <!--Favicon-->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <!--JQuery Mobile styles-->
+    <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+</head>
+
+<body>
+    <div data-role="page" id="todo-list-page" class="ui-content" data-title="To-Do List App">
+        <!-- Info Panel -->
+        <div data-role="panel" id="infoPanel">
+            <h3>About this app:</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at turpis ac ipsum aliquet vulputate ac quis
+                leo. Cras nec elit porttitor orci mollis laoreet ac in justo. Duis cursus porta erat, eu efficitur
+                risus. Integer tincidunt neque a nisl aliquam scelerisque.
+                Sed tempor gravida felis, sit amet vehicula quam sollicitudin vitae. Fusce auctor mauris dolor, vel
+                gravida est sollicitudin a. Etiam molestie massa purus, eu semper mi ullamcorper ac. Vestibulum
+                elementum, diam vel elementum laoreet,
+                magna mi interdum lorem, non aliquam ante magna eu nibh. Nunc libero lorem, sollicitudin sit amet erat
+                eget, iaculis placerat nulla. Praesent facilisis congue auctor.
+            </p>
+            <a href="#" data-rel="close"
+                class="ui-btn ui-shadow ui-corner-all ui-mini ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close
+                panel</a>
+        </div>
+        <!-- /Info Panel -->
+        <!-- Warnings popup-->
+        <div data-role="popup" id="warningsPopup" data-dismissible="false" style="max-width:400px;">
+            <a href="#" data-rel="back"
+                class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <div data-role="header">
+                <h1>Warning</h1>
+            </div>
+            <div role="main" class="ui-content" id="warningMessage">
+
+            </div>
+        </div>
+        <!-- /Warnings popup-->
+        <!--Delete task confirm popup-->
+        <div data-role="popup" id="deleteConfirm" data-dismissible="false" style="max-width:340px; padding-bottom:2em;">
+            <div data-role="header" data-theme="a">
+                <h2>Delete task?</h2>
+            </div>
+            <div role="main" class="ui-content">
+                <p>Once deleted, it cannot be recovered.</p>
+                <a href="index.html" data-rel="back" id="cmdDeleteTask"
+                    class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">Yes</a>
+                <a href="index.html" data-rel="back" id="cmdCancelDelete"
+                    class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+            </div>
+        </div>
+        <!--/Delete task confirm popup-->
+        <!-- Header -->
+        <div data-role="header">
+            <h1>To-Do List App <a href="#infoPanel"
+                    class="ui-shadow ui-mini ui-btn ui-corner-all ui-icon-info ui-btn-icon-right ui-btn-icon-notext">&nbsp;</a>
+            </h1>
+        </div>
+        <!-- /header -->
+        <div data-role="content">
+            <div data-role="collapsibleset" data-mini="true" id="taskPanels">
+                <!-- Create new Task Card-->
+                <div data-role="collapsible" data-mini="true" data-collapsed="false" data-expanded-icon="grid"
+                    data-collapsed-icon="grid" data-panel-card="edit">
+                    <h3 class="ui-collapsible-heading">Create new task</h3>
+                    <!-- Create new Task Form-->
+                    <div class="panel-inner">
+                        <div data-role="ui-field-contain">
+                            <label for="txtTaskName">Task Name:</label>
+                            <input type="text" name="txtTaskName" id="txtTaskName" value="" placeholder="Task name" />
+                        </div>
+                        <div data-role="ui-field-contain">
+                            <label for="txtTaskDescription">Task description:</label>
+                            <textarea cols="40" rows="8" name="txtTaskDescription" id="txtTaskDescription"
+                                data-mini="true" placeholder="Task description"></textarea>
+                        </div>
+
+                        <div data-role="ui-field-contain">
+                            <label for="txtExpiredDate">Expired date:</label>
+                            <input type="date" name="txtExpiredDate" id="txtExpiredDate" />
+                        </div>
+                        <div data-role="ui-field-contain">
+                            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" id="radioListState">
+                                <legend>Task state:</legend>
+                                <input type="radio" name="radio-task-state" id="radio-task-state-todo" value="to-do" />
+                                <label for="radio-task-state-todo">To-Do</label>
+                                <input type="radio" name="radio-task-state" id="radio-task-state-doing" value="doing" />
+                                <label for="radio-task-state-doing">Doing</label>
+                                <input type="radio" name="radio-task-state" id="radio-task-state-done" value="done" />
+                                <label for="radio-task-state-done">Done</label>
+                            </fieldset>
+                        </div>
+                        <div data-role="ui-field-contain" class="form-buttons">
+                            <div data-role="controlgroup" data-type="horizontal" data-mini="true" id="editFormCommands">
+                                <input type="button" data-icon="check" id="cmdAddTask" value="Add new task" />
+                                <input type="button" data-icon="delete" id="cmdClearForm" value="Clear form" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Create new Task Form-->
+                </div>
+                <!-- /Create new Task Card-->
+                <!-- To-Do Cards -->
+                <div data-role="collapsible" data-mini="true" data-expanded-icon="tag" data-collapsed-icon="tag"
+                    data-panel-card="to-do">
+                    <h3 class="ui-collapsible-heading">To-Do <span class="ui-li-count">0</span></h3>
+
+                    <div class="panel-inner">
+                        <!-- Task panel [To-do] -->
+                        <ul id="list-of-to-do" class="touch task-list-panel" data-role="listview" data-inset="true"
+                            data-split-icon="delete" data-filter="true" data-panel-card-type="to-do">
+                        </ul>
+                        <!-- /Task panel-->
+                    </div>
+
+                </div>
+                <!-- /To-Do Cards -->
+                <!-- Doing Cards -->
+                <div data-role="collapsible" data-mini="true" data-expanded-icon="clock" data-collapsed-icon="clock"
+                    data-panel-card="doing">
+                    <h3 class="ui-collapsible-heading">Doing <span class="ui-li-count">0</span></h3>
+                    <div class="panel-inner">
+                        <!-- Task panel [doing]-->
+                        <ul id="list-of-doing" class="touch task-list-panel" data-role="listview" data-inset="true"
+                            data-split-icon="delete" data-filter="true" data-panel-card-type="doing">
+                        </ul>
+                        <!-- /Task panel-->
+                    </div>
+
+                </div>
+                <!-- /Doing Cards -->
+                <!-- Done Cards -->
+                <div data-role="collapsible" data-mini="true" data-expanded-icon="check" data-collapsed-icon="check"
+                    data-panel-card="done">
+                    <h3 class="ui-collapsible-heading">Done <span class="ui-li-count">0</span></h3>
+                    <div class="panel-inner">
+
+                        <!-- Task panel-->
+                        <ul id="list-of-done" class="touch task-list-panel" data-role="listview" data-inset="true"
+                            data-split-icon="delete" data-filter="true" data-panel-card-type="done">
+                        </ul>
+                        <!-- /Task panel-->
+
+                    </div>
+                </div>
+                <!-- /Done Cards -->
+            </div>
+        </div>
+        <!-- /content -->
+    </div>
+    <!--Templates-->
+    <aside>
+        <template id="task-item-template">
+            <li class="task-item">
+                <a href="#">
+                    <h3 class="task-item-title"></h3>
+                    <p class="task-item-description"></p>
+                    <p class="ui-li-aside task-item-date"></p>
+                    <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                        <input type="button" class="cmd-move-to-to-do move-task" data-icon="tag" data-iconpos="notext"
+                            value="Move task to to-do" data-move-to="to-do" />
+                        <input type="button" class="cmd-move-to-doing move-task" data-icon="clock" data-iconpos="notext"
+                            value="Move task to doing" data-move-to="doing" />
+                        <input type="button" class="cmd-move-to-done move-task" data-icon="check" data-iconpos="notext"
+                            value="Move task to doing" data-move-to="done" />
+                        <input type="button" class="cmd-move-to-edit edit-task" data-icon="edit" data-iconpos="notext"
+                            value="Edit" />
+                    </div>
+                </a>
+                <a href="#deleteConfirm" class="task-delete-comand" data-rel="popup" data-position-to="window"
+                    data-transition="pop">Confirm!</a>
+            </li>
+        </template>
+    </aside>
+    <!-- /Templates-->
+    <!-- /page -->
+    <!--Scripts-->
+    <script src="libs/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="libs/jquery.ui.touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script src="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script>
+        $(function () {
+            app.init();
+        });
+    </script>
+</body>
+
+</html>
