@@ -40,6 +40,16 @@ ul.task-list-panel {
     white-space: nowrap !important;
 }
 
+
+.customFooter{
+    max-height: 100px;
+}
+
+.customFooter img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 /* Test */
 
 div.dop-zone {
