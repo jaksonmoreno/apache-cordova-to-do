@@ -55,3 +55,14 @@ div.dop-zone {
     cursor: move;
     color: red;
 }
+
+.footer {
+    background-color: #0470C9;
+    position: absolute;
+    align-content: center;
+    bottom: 0;
+    width: 50px;
+    height: 20px;
+    color: white;
+    text-align: center;
+    font-size: 30px;

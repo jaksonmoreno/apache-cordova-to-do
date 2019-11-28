@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>To-Do List APP </title>
+    <title>Lista de tareas pendientes</title>
     <!--Favicon-->
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="shortcut icon" href="favicon.ico" />
@@ -12,34 +12,39 @@
     <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <link rel="stylesheet" href="themes/temas.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 </head>
 
 <body>
     <div data-role="page" id="todo-list-page" class="ui-content" data-title="To-Do List App">
         <!-- Info Panel -->
         <div data-role="panel" id="infoPanel">
-            <h3>About this app:</h3>
+            <h3>Acerca de esta app:</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at turpis ac ipsum aliquet vulputate ac quis
-                leo. Cras nec elit porttitor orci mollis laoreet ac in justo. Duis cursus porta erat, eu efficitur
-                risus. Integer tincidunt neque a nisl aliquam scelerisque.
-                Sed tempor gravida felis, sit amet vehicula quam sollicitudin vitae. Fusce auctor mauris dolor, vel
-                gravida est sollicitudin a. Etiam molestie massa purus, eu semper mi ullamcorper ac. Vestibulum
-                elementum, diam vel elementum laoreet,
-                magna mi interdum lorem, non aliquam ante magna eu nibh. Nunc libero lorem, sollicitudin sit amet erat
-                eget, iaculis placerat nulla. Praesent facilisis congue auctor.
+                Esta aplicación fue concebida y desarrollada en la Dirección de Salud Colectiva con el objetivo de facilitar a los funcionarios de la Secretaría Distrital de Salud de Bogotá, particularmente de la subsecretaría de salud pública, una herramienta para el seguimiento de sus tareas.
+            </p>
+            <p>
+                Estas tareas pueden estar en tres estados, pendientes, en desarrollo y terminadas.
+            </p>
+            <p>
+                Las tareas pueden ser eliminadas de la aplicación de acuerdo con diferentes criterios: si la tarea no se va a desarrollar y/o la tarea fue terminada, u otro criterio de acuerdo con la naturaleza de la tarea.
+            </p>
+            <p>                
+                Para hacer que esta herramienta resulte útil en todo momento para los funcionarios, se entrega en versión apk, para ser instalada en los dispositivos móviles con sistema operativo android.
             </p>
             <a href="#" data-rel="close"
-                class="ui-btn ui-shadow ui-corner-all ui-mini ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close
+                class="ui-btn ui-shadow ui-corner-all ui-mini ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Cerrar
                 panel</a>
         </div>
         <!-- /Info Panel -->
         <!-- Warnings popup-->
         <div data-role="popup" id="warningsPopup" data-dismissible="false" style="max-width:400px;">
             <a href="#" data-rel="back"
-                class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
             <div data-role="header">
-                <h1>Warning</h1>
+                <h1>Advertencia</h1>
             </div>
             <div role="main" class="ui-content" id="warningMessage">
 
@@ -49,20 +54,20 @@
         <!--Delete task confirm popup-->
         <div data-role="popup" id="deleteConfirm" data-dismissible="false" style="max-width:340px; padding-bottom:2em;">
             <div data-role="header" data-theme="a">
-                <h2>Delete task?</h2>
+                <h2>¿Eliminar tarea?</h2>
             </div>
             <div role="main" class="ui-content">
-                <p>Once deleted, it cannot be recovered.</p>
+                <p>Una vez eliminado, no se puede recuperar.</p>
                 <a href="index.html" data-rel="back" id="cmdDeleteTask"
-                    class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">Yes</a>
+                    class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">Si</a>
                 <a href="index.html" data-rel="back" id="cmdCancelDelete"
-                    class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+                    class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancelar</a>
             </div>
         </div>
         <!--/Delete task confirm popup-->
         <!-- Header -->
         <div data-role="header">
-            <h1>To-Do List App <a href="#infoPanel"
+            <h1>Lista de tareas - App <a href="#infoPanel"
                     class="ui-shadow ui-mini ui-btn ui-corner-all ui-icon-info ui-btn-icon-right ui-btn-icon-notext">&nbsp;</a>
             </h1>
         </div>
@@ -72,38 +77,38 @@
                 <!-- Create new Task Card-->
                 <div data-role="collapsible" data-mini="true" data-collapsed="false" data-expanded-icon="grid"
                     data-collapsed-icon="grid" data-panel-card="edit">
-                    <h3 class="ui-collapsible-heading">Create new task</h3>
+                    <h3 class="ui-collapsible-heading">Crear nueva tarea</h3>
                     <!-- Create new Task Form-->
                     <div class="panel-inner">
                         <div data-role="ui-field-contain">
-                            <label for="txtTaskName">Task Name:</label>
-                            <input type="text" name="txtTaskName" id="txtTaskName" value="" placeholder="Task name" />
+                            <label for="txtTaskName">Nombre de la tarea:</label>
+                            <input type="text" name="txtTaskName" id="txtTaskName" value="" placeholder="Nombre de la tarea" />
                         </div>
                         <div data-role="ui-field-contain">
-                            <label for="txtTaskDescription">Task description:</label>
+                            <label for="txtTaskDescription">Descripción de la tarea:</label>
                             <textarea cols="40" rows="8" name="txtTaskDescription" id="txtTaskDescription"
-                                data-mini="true" placeholder="Task description"></textarea>
+                                data-mini="true" placeholder="Descripción de la tarea"></textarea>
                         </div>
 
                         <div data-role="ui-field-contain">
-                            <label for="txtExpiredDate">Expired date:</label>
+                            <label for="txtExpiredDate">Fecha de vencimiento:</label>
                             <input type="date" name="txtExpiredDate" id="txtExpiredDate" />
                         </div>
                         <div data-role="ui-field-contain">
                             <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" id="radioListState">
-                                <legend>Task state:</legend>
+                                <legend>Estado de la tarea:</legend>
                                 <input type="radio" name="radio-task-state" id="radio-task-state-todo" value="to-do" />
-                                <label for="radio-task-state-todo">To-Do</label>
+                                <label for="radio-task-state-todo">Pendiente (s)</label>
                                 <input type="radio" name="radio-task-state" id="radio-task-state-doing" value="doing" />
-                                <label for="radio-task-state-doing">Doing</label>
+                                <label for="radio-task-state-doing">En desarrollo</label>
                                 <input type="radio" name="radio-task-state" id="radio-task-state-done" value="done" />
-                                <label for="radio-task-state-done">Done</label>
+                                <label for="radio-task-state-done">Terminada (s)</label>
                             </fieldset>
                         </div>
                         <div data-role="ui-field-contain" class="form-buttons">
                             <div data-role="controlgroup" data-type="horizontal" data-mini="true" id="editFormCommands">
-                                <input type="button" data-icon="check" id="cmdAddTask" value="Add new task" />
-                                <input type="button" data-icon="delete" id="cmdClearForm" value="Clear form" />
+                                <input type="button" data-icon="check" id="cmdAddTask" value="Agregar nueva tarea" />
+                                <input type="button" data-icon="delete" id="cmdClearForm" value="Limpiar formulario" />
                             </div>
                         </div>
                     </div>
@@ -113,7 +118,7 @@
                 <!-- To-Do Cards -->
                 <div data-role="collapsible" data-mini="true" data-expanded-icon="tag" data-collapsed-icon="tag"
                     data-panel-card="to-do">
-                    <h3 class="ui-collapsible-heading">To-Do <span class="ui-li-count">0</span></h3>
+                    <h3 class="ui-collapsible-heading">Pendiente (s) </h3>
 
                     <div class="panel-inner">
                         <!-- Task panel [To-do] -->
@@ -128,7 +133,7 @@
                 <!-- Doing Cards -->
                 <div data-role="collapsible" data-mini="true" data-expanded-icon="clock" data-collapsed-icon="clock"
                     data-panel-card="doing">
-                    <h3 class="ui-collapsible-heading">Doing <span class="ui-li-count">0</span></h3>
+                    <h3 class="ui-collapsible-heading">En desarrollo </h3>
                     <div class="panel-inner">
                         <!-- Task panel [doing]-->
                         <ul id="list-of-doing" class="touch task-list-panel" data-role="listview" data-inset="true"
@@ -142,7 +147,7 @@
                 <!-- Done Cards -->
                 <div data-role="collapsible" data-mini="true" data-expanded-icon="check" data-collapsed-icon="check"
                     data-panel-card="done">
-                    <h3 class="ui-collapsible-heading">Done <span class="ui-li-count">0</span></h3>
+                    <h3 class="ui-collapsible-heading">Terminada (s) </h3>
                     <div class="panel-inner">
 
                         <!-- Task panel-->
@@ -178,7 +183,7 @@
                     </div>
                 </a>
                 <a href="#deleteConfirm" class="task-delete-comand" data-rel="popup" data-position-to="window"
-                    data-transition="pop">Confirm!</a>
+                    data-transition="pop">Confirmar!</a>
             </li>
         </template>
     </aside>
@@ -195,6 +200,8 @@
             app.init();
         });
     </script>
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <img src="img/LOGOS-02.png">
+    </footer>
 </body>
-
 </html>
